@@ -20,9 +20,14 @@ background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
 color:white;
 overflow-x:hidden;
 scroll-behavior:smooth;
+transition:0.5s;
 }
 
-/* Sections Compact */
+body.blur{
+filter:blur(6px);
+}
+
+/* Sections */
 section{
 padding:80px 20px;
 text-align:center;
@@ -37,7 +42,6 @@ animation:fadeUp 1s ease forwards;
 
 section:nth-child(2){animation-delay:0.3s;}
 section:nth-child(3){animation-delay:0.6s;}
-section:nth-child(4){animation-delay:0.9s;}
 
 @keyframes fadeUp{
 to{
@@ -57,6 +61,7 @@ line-height:1.6;
 max-width:350px;
 }
 
+/* Button */
 .btn{
 margin-top:20px;
 padding:12px 25px;
@@ -95,27 +100,45 @@ from{box-shadow:0 0 15px #ff4e50;}
 to{box-shadow:0 0 35px #f9d423;}
 }
 
-/* Popup */
+/* Popup Glass Effect */
 .popup{
 position:fixed;
 bottom:-100%;
 left:0;
 width:100%;
-background:#1c1c3c;
-padding:30px 20px;
+background:rgba(28,28,60,0.9);
+backdrop-filter:blur(15px);
+padding:40px 20px;
 border-top-left-radius:30px;
 border-top-right-radius:30px;
 transition:0.6s;
 text-align:center;
-box-shadow:0 -5px 20px rgba(0,0,0,0.5);
+box-shadow:0 -5px 20px rgba(0,0,0,0.6);
+z-index:1000;
 }
 
 .popup.active{
 bottom:0;
 }
 
+.popup h2{
+font-size:24px;
+margin-bottom:15px;
+animation:glowText 2s infinite alternate;
+}
+
+.popup p{
+font-size:18px;   /* Increased text size */
+animation:glowText 2s infinite alternate;
+}
+
+@keyframes glowText{
+from{text-shadow:0 0 5px #ff4e50;}
+to{text-shadow:0 0 20px #f9d423;}
+}
+
 .close-btn{
-margin-top:15px;
+margin-top:20px;
 background:#ff4e50;
 }
 
@@ -144,7 +167,25 @@ opacity:0;
 }
 }
 
-/* Final Letter */
+/* Confetti */
+.confetti{
+position:fixed;
+width:8px;
+height:8px;
+background:red;
+top:-10px;
+animation:fall 3s linear forwards;
+z-index:2000;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(720deg);
+opacity:0;
+}
+}
+
+/* Letter */
 .final-message{
 display:none;
 padding:10px 0;
@@ -162,7 +203,6 @@ from{opacity:0;}
 to{opacity:1;}
 }
 
-/* Footer */
 footer{
 padding:30px;
 font-size:13px;
@@ -195,21 +235,12 @@ opacity:0.7;
 <button class="btn" onclick="showMessage()">Read My Letter</button>
 
 <div class="final-message" id="message">
-
 <br><br>
 <b>Dear Akshada,</b><br><br>
-
-It truly feels special to reconnect with you after all these years. We were classmates until 6th standard, and then life took us on different paths. After nine long years, meeting you again has been such a pleasant and unexpected surprise. I am genuinely grateful that our paths crossed once more and that we could rebuild our friendship.<br><br>
-
-I wanted to write something meaningful for you today, even though words can only express a small part of what I feel. Your presence brings warmth and positivity, and your smile still carries the same beautiful charm I remember from our school days.<br><br>
-
-I sincerely wish that this year brings you happiness, success, and countless reasons to smile. May you continue to grow, achieve your dreams, and remain the wonderful person you are.<br><br>
-
-I truly value our friendship and feel lucky to have reconnected with you.<br><br>
-
+It truly feels special to reconnect with you after all these years...
+<br><br>
 With warm wishes,<br>
 Om ✨
-
 </div>
 </section>
 
@@ -227,6 +258,7 @@ Made with ❤️ for Akshada
 
 function openPopup(){
 document.getElementById("popup").classList.add("active");
+createConfetti();
 }
 
 function closePopup(){
@@ -237,7 +269,7 @@ function showMessage(){
 document.getElementById("message").classList.add("show");
 }
 
-/* Floating Hearts */
+/* Hearts */
 function createHearts(){
 const heart=document.createElement("div");
 heart.classList.add("heart");
@@ -247,12 +279,23 @@ heart.style.fontSize=Math.random()*20+10+"px";
 heart.style.animationDuration=Math.random()*3+3+"s";
 document.querySelector(".hearts").appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},6000);
+setTimeout(()=>{heart.remove();},6000);
 }
-
 setInterval(createHearts,500);
+
+/* Confetti */
+function createConfetti(){
+for(let i=0;i<60;i++){
+const confetti=document.createElement("div");
+confetti.classList.add("confetti");
+confetti.style.left=Math.random()*100+"%";
+confetti.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
+confetti.style.animationDuration=Math.random()*2+2+"s";
+document.body.appendChild(confetti);
+
+setTimeout(()=>{confetti.remove();},3000);
+}
+}
 
 </script>
 
