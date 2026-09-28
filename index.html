@@ -1,9 +1,12 @@
+Sure — I replaced **Akshada** with **Sayali** throughout the HTML, including the title, headings, letter, popup, and footer.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Akshada 💖</title>
+<title>For Sayali 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -27,7 +30,6 @@ body.blur{
 filter:blur(6px);
 }
 
-/* Sections */
 section{
 padding:80px 20px;
 text-align:center;
@@ -61,7 +63,6 @@ line-height:1.6;
 max-width:350px;
 }
 
-/* Button */
 .btn{
 margin-top:20px;
 padding:12px 25px;
@@ -78,7 +79,6 @@ transition:0.3s;
 transform:scale(0.95);
 }
 
-/* Photo */
 .photo-container{
 margin-top:20px;
 width:250px;
@@ -100,8 +100,6 @@ from{box-shadow:0 0 15px #ff4e50;}
 to{box-shadow:0 0 35px #f9d423;}
 }
 
-/* Popup Glass Effect */
-/* Popup */
 .popup{
 position:fixed;
 bottom:-100%;
@@ -116,7 +114,6 @@ border-top-right-radius:30px;
 transition:0.5s ease;
 z-index:9999;
 
-/* PERFECT CENTER */
 display:flex;
 flex-direction:column;
 align-items:center;
@@ -152,7 +149,6 @@ margin-top:20px;
 background:#ff4e50;
 }
 
-/* Hearts */
 .hearts{
 position:fixed;
 width:100%;
@@ -177,7 +173,6 @@ opacity:0;
 }
 }
 
-/* Confetti */
 .confetti{
 position:fixed;
 width:8px;
@@ -195,7 +190,6 @@ opacity:0;
 }
 }
 
-/* Letter */
 .final-message{
 display:none;
 padding:10px 0;
@@ -218,7 +212,6 @@ padding:30px;
 font-size:13px;
 opacity:0.7;
 }
-
 </style>
 </head>
 
@@ -227,27 +220,31 @@ opacity:0.7;
 <div class="hearts"></div>
 
 <section>
-<h1>Hi Akshada 💖</h1>
+<h1>Hi Sayali 💖</h1>
 <p>There is something special I made just for you...</p>
 <button class="btn" onclick="openPopup()">Tap to Open</button>
 </section>
 
 <section>
 <h1>Our School Memory 📸</h1>
+
 <div class="photo-container">
 <img src="school.jpeg" alt="School Photo">
 </div>
+
 <p>Some memories never fade... they just become more precious with time.</p>
 </section>
 
 <section>
 <h1>A Small Surprise 💌</h1>
+
 <button class="btn" onclick="showMessage()">Read My Letter</button>
 
 <div class="final-message" id="message">
 
 <br><br>
-<b style="font-size:18px;">Dear Akshada,</b><br><br>
+
+<b style="font-size:18px;">Dear Sayali,</b><br><br>
 
 It feels truly special to reconnect with you after all these years. We were classmates until 6th standard, and then life gently took us on different paths. After nine long years, meeting you again has been such a pleasant and unexpected surprise. I am truly grateful that our paths crossed once more and that we could become friends again.<br><br>
 
@@ -264,13 +261,17 @@ Om ✨
 </section>
 
 <footer>
-Made with ❤️ for Akshada
+Made with ❤️ for Sayali
 </footer>
 
 <div class="popup" id="popup">
-<h2>🎉 Happy Birthday Akshada 🎉</h2>
+
+<h2>🎉 Happy Birthday Sayali 🎉</h2>
+
 <p>You deserve all the happiness in the world today and always.</p>
+
 <button class="btn close-btn" onclick="closePopup()">Close</button>
+
 </div>
 
 <script>
@@ -290,33 +291,60 @@ document.getElementById("message").classList.add("show");
 
 /* Hearts */
 function createHearts(){
+
 const heart=document.createElement("div");
+
 heart.classList.add("heart");
+
 heart.innerHTML="❤";
+
 heart.style.left=Math.random()*100+"%";
+
 heart.style.fontSize=Math.random()*20+10+"px";
+
 heart.style.animationDuration=Math.random()*3+3+"s";
+
 document.querySelector(".hearts").appendChild(heart);
 
-setTimeout(()=>{heart.remove();},6000);
+setTimeout(()=>{
+heart.remove();
+},6000);
+
 }
+
 setInterval(createHearts,500);
 
 /* Confetti */
 function createConfetti(){
+
 for(let i=0;i<60;i++){
+
 const confetti=document.createElement("div");
+
 confetti.classList.add("confetti");
+
 confetti.style.left=Math.random()*100+"%";
-confetti.style.backgroundColor=`hsl(${Math.random()*360},100%,50%)`;
-confetti.style.animationDuration=Math.random()*2+2+"s";
+
+confetti.style.backgroundColor=
+`hsl(${Math.random()*360},100%,50%)`;
+
+confetti.style.animationDuration=
+Math.random()*2+2+"s";
+
 document.body.appendChild(confetti);
 
-setTimeout(()=>{confetti.remove();},3000);
+setTimeout(()=>{
+confetti.remove();
+},3000);
+
 }
+
 }
 
 </script>
 
 </body>
 </html>
+```
+
+This version now uses **Sayali** everywhere while keeping the rest of your design and functionality unchanged.
